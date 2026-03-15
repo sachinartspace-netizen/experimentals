@@ -14,6 +14,38 @@ You mention that:
 
 **This suggests the models should be available to you, but something has changed.**
 
+## 🚀 One-Command Terminal Fix
+
+**Try this first!** Close VS Code completely, then run this command in your terminal:
+
+### For macOS:
+```bash
+rm -rf ~/Library/Application\ Support/Code/Cache/* ~/Library/Application\ Support/Code/CachedData/* && killall "Visual Studio Code" 2>/dev/null; code
+```
+
+### For Linux:
+```bash
+rm -rf ~/.config/Code/Cache/* ~/.config/Code/CachedData/* && killall code 2>/dev/null; code
+```
+
+### For Windows (PowerShell - Run as Administrator):
+```powershell
+Stop-Process -Name "Code" -Force -ErrorAction SilentlyContinue; Remove-Item -Path "$env:APPDATA\Code\Cache\*" -Recurse -Force; Remove-Item -Path "$env:APPDATA\Code\CachedData\*" -Recurse -Force; Start-Process code
+```
+
+**What this does:**
+1. Clears VS Code cache (where corrupted model data might be stored)
+2. Kills any running VS Code processes
+3. Restarts VS Code with a fresh cache
+
+After VS Code reopens:
+1. Sign in to GitHub Copilot again (if prompted)
+2. Check the model selector - Claude models should now appear
+
+If this doesn't work, try the detailed fixes below.
+
+---
+
 ## Quick Fixes (Try These First)
 
 ### Fix 1: Reload VS Code Window
