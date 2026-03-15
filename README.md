@@ -23,6 +23,8 @@ You mention that:
 rm -rf ~/Library/Application\ Support/Code/Cache/* ~/Library/Application\ Support/Code/CachedData/* && killall "Visual Studio Code" 2>/dev/null; code
 ```
 
+**Note for macOS users:** If your shell asks "sure you want to delete all the files?" - type `y` and press Enter. This is safe - it only deletes VS Code's cache files (temporary data), not your settings or extensions.
+
 ### For Linux:
 ```bash
 rm -rf ~/.config/Code/Cache/* ~/.config/Code/CachedData/* && killall code 2>/dev/null; code
@@ -37,6 +39,8 @@ Stop-Process -Name "Code" -Force -ErrorAction SilentlyContinue; Remove-Item -Pat
 1. Clears VS Code cache (where corrupted model data might be stored)
 2. Kills any running VS Code processes
 3. Restarts VS Code with a fresh cache
+
+**Is it safe?** Yes! The cache contains only temporary files that VS Code will recreate. Your settings, extensions, and code are NOT affected.
 
 After VS Code reopens:
 1. Sign in to GitHub Copilot again (if prompted)
